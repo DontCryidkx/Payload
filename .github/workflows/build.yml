@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04  # Use Ubuntu 20.04 instead of ubuntu-latest
 
     steps:
     - name: Checkout Repository
@@ -22,7 +22,7 @@ jobs:
         sudo apt-get install -y make clang gcc g++ llvm binutils software-properties-common aptitude golang
         sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
         sudo apt-get update
-        sudo apt-get install -y g++-7 gcc-7 g++-7
+        sudo apt-get install -y g++-7 gcc-7
 
     - name: Set PS4SDK environment variable
       run: echo 'PS4SDK="/mnt/c/SDK"' >> $GITHUB_ENV
@@ -32,5 +32,3 @@ jobs:
       run: |
         make clean
         make
-      # Du kannst hier weitere Kommandos hinzufügen, falls nötig
-
