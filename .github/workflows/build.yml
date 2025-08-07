@@ -44,4 +44,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: menu-bin
-        path: gtaPayload/build/gtaPayload.bin
+        path: gtaPayload/gtaPayload.bin
