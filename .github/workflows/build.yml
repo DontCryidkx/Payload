@@ -24,7 +24,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y g++-7 gcc-7
 
-    - name: Set PS4SDK environment variable
+    - name: Set PS4SDKD environment variable
       run: echo 'PS4SDK="/mnt/c/SDK"' >> $GITHUB_ENV
 
     - name: Compile menu.bin
