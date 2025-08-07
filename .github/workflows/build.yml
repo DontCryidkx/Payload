@@ -41,7 +41,7 @@ jobs:
         make
         
     - name: Upload menu.bin artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: menu-bin
-          path: gtaPayload/menu.bin
+      uses: actions/upload-artifact@v3
+      with:
+        name: menu-bin
+        path: gtaPayload/menu.bin
