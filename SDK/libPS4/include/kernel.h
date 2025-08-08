@@ -55,6 +55,7 @@ extern int (*sceKernelClose)(int fd);
 
 extern unsigned int (*sceKernelSleep)(unsigned int seconds);
 extern int (*sceKernelUsleep)(unsigned int microseconds);
+extern int (*usleep)(unsigned int microseconds);
 extern int (*sceKernelGettimeofday)(SceKernelTimeval *tp);
 extern uint64_t (*sceKernelGetProcessTime)(void);
 extern int (*sceKernelGetCurrentCpu)(void);
@@ -85,6 +86,12 @@ extern int (*setregid)(int rgid, int egid);
 extern int (*sceKernelSendNotificationRequest)(int device, SceNotificationRequest *req, size_t size, int blocking);
 extern const char *(*sceKernelGetFsSandboxRandomWord)();
 extern int (*sceKernelGetSystemSwVersion)(SceFwInfo *fw_info);
+
+extern uint32_t (*sceKernelGetCpuTemperature)(uint32_t *);
+
+extern uint32_t (*sceKernelGetIdPs)(void *);
+extern uint32_t (*sceKernelGetOpenPsId)(void *);
+extern uint32_t (*sceKernelGetOpenPsIdForSystem)(void *);
 
 int kill(int pid, int signum);
 

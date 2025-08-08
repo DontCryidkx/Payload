@@ -148,7 +148,7 @@ static inline __attribute__((always_inline)) void writeCr0(uint64_t cr0) {
 
 #define kclock_macro(x)                                                                   \
   kernel_base = &((uint8_t *)__readmsr(0xC0000082))[-K##x##_XFAST_SYSCALL];               \
-  if (atoi(#x) >= 450) {                                                                  \
+  if (atoi(#x) > 407) {                                                                   \
     sceSblSrtcClearTimeDifference = (void *)(kernel_base + K##x##_CLEAR_TIME_DIFFERENCE); \
     sceSblSrtcClearTimeDifference(15);                                                    \
   }                                                                                       \
@@ -163,56 +163,93 @@ static inline __attribute__((always_inline)) void writeCr0(uint64_t cr0) {
   kernel_ptr = (uint8_t *)kernel_base;                                      \
   tid_patch = &kernel_ptr[K##x##_TARGET_ID];
 
-#define perm_uart_macro(x)                                                  \
+#define icc_nvs_write_macro(x)                                              \
   kernel_base = &((uint8_t *)__readmsr(0xC0000082))[-K##x##_XFAST_SYSCALL]; \
   icc_nvs_write = (void *)(kernel_base + K##x##_ICC_NVS_WRITE);
+
+#define npdrm_macro(x)                                                      \
+  kernel_base = &((uint8_t *)__readmsr(0xC0000082))[-K##x##_XFAST_SYSCALL]; \
+  kernel_ptr = (uint8_t *)kernel_base;                                      \
+  npdrm_open = &kernel_ptr[K##x##_NPDRM_OPEN];                              \
+  npdrm_close = &kernel_ptr[K##x##_NPDRM_CLOSE];                            \
+  npdrm_ioctl = &kernel_ptr[K##x##_NPDRM_IOCTL];
+
+#define no_bd_macro(x)                                                      \
+  kernel_base = &((uint8_t *)__readmsr(0xC0000082))[-K##x##_XFAST_SYSCALL]; \
+  kernel_ptr = (uint8_t *)kernel_base;                                      \
+  no_bd_patch = &kernel_ptr[K##x##_NO_BD_PATCH];
 
 #define caseentry(id, macro) \
   case id:                   \
     macro(id);               \
     break;
 
-#define build_kpayload(id, macro)          \
-  switch (id) {                            \
-    caseentry(400, macro);                 \
-    caseentry(401, macro);                 \
-    caseentry(405, macro);                 \
-    caseentry(406, macro);                 \
-    caseentry(407, macro);                 \
-    caseentry(450, macro);                 \
-    caseentry(455, macro);                 \
-    caseentry(470, macro);                 \
-    caseentry(471, macro);                 \
-    caseentry(472, macro);                 \
-    caseentry(473, macro);                 \
-    caseentry(474, macro);                 \
-    caseentry(500, macro);                 \
-    caseentry(501, macro);                 \
-    caseentry(503, macro);                 \
-    caseentry(505, macro);                 \
-    caseentry(507, macro);                 \
-    caseentry(550, macro);                 \
-    caseentry(553, macro);                 \
-    caseentry(555, macro);                 \
-    caseentry(556, macro);                 \
-    caseentry(600, macro);                 \
-    caseentry(602, macro);                 \
-    caseentry(620, macro);                 \
-    caseentry(650, macro);                 \
-    caseentry(651, macro);                 \
-    caseentry(670, macro);                 \
-    caseentry(671, macro);                 \
-    caseentry(672, macro);                 \
-    caseentry(700, macro);                 \
-    caseentry(701, macro);                 \
-    caseentry(702, macro);                 \
-    caseentry(750, macro);                 \
-    caseentry(751, macro);                 \
-    caseentry(755, macro);                 \
-    caseentry(800, macro);                 \
-  default:                                 \
-    printf_debug("Unsupported firmware");  \
-    return -1;                             \
+#define build_kpayload(id, macro)         \
+  switch (id) {                           \
+    caseentry(350, macro);                \
+    caseentry(355, macro);                \
+    caseentry(370, macro);                \
+    caseentry(400, macro);                \
+    caseentry(401, macro);                \
+    caseentry(405, macro);                \
+    caseentry(406, macro);                \
+    caseentry(407, macro);                \
+    caseentry(450, macro);                \
+    caseentry(455, macro);                \
+    caseentry(470, macro);                \
+    caseentry(471, macro);                \
+    caseentry(472, macro);                \
+    caseentry(473, macro);                \
+    caseentry(474, macro);                \
+    caseentry(500, macro);                \
+    caseentry(501, macro);                \
+    caseentry(503, macro);                \
+    caseentry(505, macro);                \
+    caseentry(507, macro);                \
+    caseentry(550, macro);                \
+    caseentry(553, macro);                \
+    caseentry(555, macro);                \
+    caseentry(556, macro);                \
+    caseentry(600, macro);                \
+    caseentry(602, macro);                \
+    caseentry(620, macro);                \
+    caseentry(650, macro);                \
+    caseentry(651, macro);                \
+    caseentry(670, macro);                \
+    caseentry(671, macro);                \
+    caseentry(672, macro);                \
+    caseentry(700, macro);                \
+    caseentry(701, macro);                \
+    caseentry(702, macro);                \
+    caseentry(750, macro);                \
+    caseentry(751, macro);                \
+    caseentry(755, macro);                \
+    caseentry(800, macro);                \
+    caseentry(801, macro);                \
+    caseentry(803, macro);                \
+    caseentry(850, macro);                \
+    caseentry(852, macro);                \
+    caseentry(900, macro);                \
+    caseentry(903, macro);                \
+    caseentry(904, macro);                \
+    caseentry(950, macro);                \
+    caseentry(951, macro);                \
+    caseentry(960, macro);                \
+    caseentry(1000, macro);               \
+    caseentry(1001, macro);               \
+    caseentry(1050, macro);               \
+    caseentry(1070, macro);               \
+    caseentry(1071, macro);               \
+    caseentry(1100, macro);               \
+    caseentry(1102, macro);               \
+    caseentry(1150, macro);               \
+    caseentry(1152, macro);               \
+    caseentry(1200, macro);               \
+    caseentry(1202, macro);               \
+    caseentry(1250, macro);               \
+  default:                                \
+    printf_debug("Unsupported firmware"); \
+    return -1;                            \
   }
 
 int is_fw_spoofed();
@@ -230,5 +267,8 @@ int kernel_clock(uint64_t value);
 int enable_browser();
 int spoof_target_id(uint8_t id);
 int enable_perm_uart();
+int exit_idu();
+int npdrm_patch();
+int no_bd_patch();
 
 #endif

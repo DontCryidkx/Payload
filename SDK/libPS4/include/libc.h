@@ -34,6 +34,8 @@ extern int (*sprintf)(char *str, const char *format, ...);
 extern int (*snprintf)(char *str, size_t size, const char *format, ...);
 extern int (*snprintf_s)(char *restrict buffer, rsize_t bufsz, const char *restrict format, ...);
 extern int (*sscanf)(const char *str, const char *format, ...);
+extern int (*strtol)(const char* s1, char** s2, int base);
+extern char *(*strtok)(char *str, const char *delimiters);
 extern char *(*strchr)(const char *s, int c);
 extern char *(*strrchr)(const char *s, int c);
 extern char *(*strstr)(char *str1, char *str2);
@@ -42,7 +44,9 @@ extern char *(*strtok)(char *str, const char *sep);
 extern char *(*index)(const char *s, int c);
 extern char *(*rindex)(const char *s, int c);
 extern char *(*rindex)(const char *s, int c);
+extern int (*isspace)(int c);
 extern int (*isdigit)(int c);
+extern int (*isxdigit)(int c);
 extern int (*atoi)(const char *s);
 extern double (*atof)(const char *s);
 extern size_t (*strlcpy)(char *dst, const char *src, size_t size);
@@ -50,6 +54,10 @@ extern char *(*strerror)(int errnum);
 extern void *(*_Getpctype)();
 extern unsigned long (*_Stoul)(const char *, char **, int);
 extern void (*bcopy)(const void *s1, void *s2, size_t n);
+extern double (*ceil)(double x);
+
+extern int (*tolower)(int c);
+extern int (*toupper)(int c);
 
 extern void (*srand)(unsigned int seed);
 extern int (*rand)(void);
@@ -82,6 +90,7 @@ extern int (*fseek)(FILE *stream, long int offset, int origin);
 extern long int (*ftell)(FILE *stream);
 extern int (*fclose)(FILE *stream);
 extern int (*fprintf)(FILE *stream, const char *format, ...);
+extern char *(*fgets)(char *str, int size, FILE *stream);
 
 int memset_s(void *s, rsize_t smax, int c, rsize_t n);
 
