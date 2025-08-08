@@ -1,4 +1,4 @@
-LIBPS4	:=	$(CURDIR)/SDK/libPS4  # Relativer Pfad
+LIBPS4	:=	$(PS4SDK)/libPS4
 
 CC		:=	gcc
 AS		:=	gcc
