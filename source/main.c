@@ -25,7 +25,7 @@ BOOL regionCheck() {
 		hookAddress = HookAddress;	
 	}
 	else {
-		sysNotify("Failed to detect GTA V.");
+		sysNotify("Failed to detect GTA 5.");
 		procDetach(gamePID);
 		return FALSE;
 	}
