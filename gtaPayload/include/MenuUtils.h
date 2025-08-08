@@ -674,35 +674,35 @@ void SetupActions()
 	drawText("Lush Modz Base", 7, TitleTextX, TitleTextY, 1.2f, 1.2f, bannerTextRed, bannerTextGreen, bannerTextBlue, bannerTextOpacity, true); // Banner Title
 	if (optionCount > maxOptions)
 	{
-	  DRAW_RECT(0.82f, 0.515f, 0.315f,  0.955f, 0, 0, 0, backgroundOpacity, 1); //Background
+	  DRAW_RECT(0.82f, 0.515f, 0.315f,  0.955f, 0, 0, 0, backgroundOpacity); //Background
 
-	  DRAW_RECT(0.82f, 0.075f, 0.315f, 0.075f, 135, 27, 243, 255, 1); //Header Rectangle
+	  DRAW_RECT(0.82f, 0.075f, 0.315f, 0.075f, 135, 27, 243, 255); //Header Rectangle
 
-	  DRAW_RECT(0.82f, 0.115f, 0.315f, 0.005f, 255, 255, 255, 115, 1); //Header Seperator Rectangle
+	  DRAW_RECT(0.82f, 0.115f, 0.315f, 0.005f, 255, 255, 255, 115); //Header Seperator Rectangle
 
-	  DRAW_RECT(0.82f, 0.96f, 0.315f, 0.065f, 135, 27, 243, 255, 1); //Footer Rectangle
+	  DRAW_RECT(0.82f, 0.96f, 0.315f, 0.065f, 135, 27, 243, 255); //Footer Rectangle
 	  
 		if (currentOption > maxOptions)
 			{
-				DRAW_RECT(ScrollerX, ((maxOptions * 0.035f) + SrollerIDKYET), ScrollerWidth, ScrollerHeight, scrollerRed, scrollerGreen, scrollerBlue, scrollerOpacity, 1); //Scroller
+				DRAW_RECT(ScrollerX, ((maxOptions * 0.035f) + SrollerIDKYET), ScrollerWidth, ScrollerHeight, scrollerRed, scrollerGreen, scrollerBlue, scrollerOpacity); //Scroller
 			}
 			else
 			{
-				DRAW_RECT(ScrollerX, ((currentOption * 0.035f) + SrollerIDKYET), ScrollerWidth, ScrollerHeight, scrollerRed, scrollerGreen, scrollerBlue, scrollerOpacity, 1); //Scroller
+				DRAW_RECT(ScrollerX, ((currentOption * 0.035f) + SrollerIDKYET), ScrollerWidth, ScrollerHeight, scrollerRed, scrollerGreen, scrollerBlue, scrollerOpacity); //Scroller
 			}
 		}
 
 	else
 	{
-	  DRAW_RECT(0.82f, 0.515f, 0.315f,  0.955f, 0, 0, 0, backgroundOpacity, 1); //Background
+	  DRAW_RECT(0.82f, 0.515f, 0.315f,  0.955f, 0, 0, 0, backgroundOpacity); //Background
 
-	  DRAW_RECT(0.82f, 0.075f, 0.315f, 0.075f, 135, 27, 243, 255, 1); //Header Rectangle
+	  DRAW_RECT(0.82f, 0.075f, 0.315f, 0.075f, 135, 27, 243, 255); //Header Rectangle
 
-	  DRAW_RECT(0.82f, 0.115f, 0.315f, 0.005f, 255, 255, 255, 115, 1); //Header Seperator Rectangle
+	  DRAW_RECT(0.82f, 0.115f, 0.315f, 0.005f, 255, 255, 255, 115); //Header Seperator Rectangle
 
-	  DRAW_RECT(0.82f, 0.96f, 0.315f, 0.065f, 135, 27, 243, 255, 1); //Footer aka bottom Rectangle
+	  DRAW_RECT(0.82f, 0.96f, 0.315f, 0.065f, 135, 27, 243, 255); //Footer aka bottom Rectangle
 	  
-	  DRAW_RECT(ScrollerX, ((currentOption * 0.035f) + SrollerIDKYET), ScrollerWidth, ScrollerHeight, scrollerRed, scrollerGreen, scrollerBlue, scrollerOpacity, 1); //Scroller
+	  DRAW_RECT(ScrollerX, ((currentOption * 0.035f) + SrollerIDKYET), ScrollerWidth, ScrollerHeight, scrollerRed, scrollerGreen, scrollerBlue, scrollerOpacity); //Scroller
 	}
 }
 
