@@ -40,6 +40,12 @@ jobs:
         make clean
         make
         
+    - name: Compile Payload directoy
+      working-directory: ./
+      run: |
+        make clean
+        make
+        
     - name: Upload menu.bin artifact
       uses: actions/upload-artifact@v4
       with:
