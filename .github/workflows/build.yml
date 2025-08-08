@@ -40,7 +40,7 @@ jobs:
     #    make clean
     #    make
 
-    -name: Debug listening
+    - name: Debug listening
       run: |
         ls -laR SDK/libPS4
         echo "PS4SDK=$PS4SDK"
