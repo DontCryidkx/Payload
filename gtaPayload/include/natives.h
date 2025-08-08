@@ -854,7 +854,7 @@
 	static void SET_ENTITY_COORDS_NO_OFFSET(Entity entity, float xPos, float yPos, float zPos, BOOL xAxis, BOOL yAxis, BOOL zAxis) { invoke<Void>(0x9BA510, entity, xPos, yPos, zPos, xAxis, yAxis, zAxis); } // 0x239A3351AC1DA385 0x4C83DE8D b323
 	static void SET_ENTITY_DYNAMIC(Entity entity, BOOL toggle) { invoke<Void>(0x9BA540, entity, toggle); } // 0x1718DE8E3F2823CA 0x236F525B b323
 	static void SET_ENTITY_HEADING(Entity entity, float heading) { invoke<Void>(0x9BA5C0, entity, heading); } // 0x8E2530AA8ADA980E 0xE0FF064D b323
-	static void SET_ENTITY_HEALTH(Entity entity, int health, int p2) { invoke<Void>(0x9BA5D0, entity, health, p2); } // 0x6B76DC1F3AE6E6A3 0xFBCD1831 b323
+	static void SET_ENTITY_HEALTH(Entity entity, int health) { invoke<Void>(0x9BA5D0, entity, health); } // 0x6B76DC1F3AE6E6A3 0xFBCD1831 b323
 	static void SET_ENTITY_INVINCIBLE(Entity entity, BOOL toggle) { invoke<Void>(0x9BA5F0, entity, toggle); } // 0x3882114BDE571AD4 0xC1213A21 b323
 	static void SET_ENTITY_IS_TARGET_PRIORITY(Entity entity, BOOL p1, float p2) { invoke<Void>(0x9BA6D0, entity, p1, p2); } // 0xEA02E132F5C68722 0x9729EE32 b323
 	static void SET_ENTITY_LIGHTS(Entity entity, BOOL toggle) { invoke<Void>(0x9BA7F0, entity, toggle); } // 0x7CFBA6A80BDF3874 0xE8FC85AF b323
