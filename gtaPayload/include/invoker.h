@@ -55,36 +55,17 @@ struct NativeArg_s {
 };
 
 extern NativeArg_s nativeArg;
+extern u64 args[30]; // Move declaration here
 
-// Basis-Funktionen
+// Function declarations
 void callHash(u64 hash);
 void resetArgs();
 void setVectors();
 
-// Push-Argument Hilfsfunktion
+// Template declaration (no implementation in header)
 template<typename T>
-inline void pushArg(T value) {
-    *(T*)&nativeArg.argValues[nativeArg.argCount++] = value;
-}
+void pushArg(T value);
 
-// Haupt-Template für Nicht-Void
+// Main invoke template
 template<typename N, typename... A>
-inline N invoke(u64 hash, A... args) {
-    resetArgs();
-    u64 dummy[] = { (pushArg(args), 0)... };
-    (void)dummy;
-    callHash(hash);
-    setVectors();
-    return *(N*)nativeArg.returnValue;
-}
-
-// Explizite Void-Spezialisierung
-template<typename... A>
-inline void invoke(u64 hash, A... args) {
-    resetArgs();
-    u64 dummy[] = { (pushArg(args), 0)... };
-    (void)dummy;
-    callHash(hash);
-    setVectors();
-    // Kein Return, aber die Native wird trotzdem aufgerufen!
-}
+N invoke(u64 hash, A... args);
