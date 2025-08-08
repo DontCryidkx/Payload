@@ -39,6 +39,11 @@ jobs:
     #  run: |
     #    make clean
     #    make
+
+    -name: Debug listening
+      run: |
+        ls -laR SDK/libPS4
+        echo "PS4SDK=$PS4SDK"
         
     - name: Compile Payload directoy
       working-directory: ./
