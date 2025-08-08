@@ -41,7 +41,7 @@ void Menu(void)
 	switch (NumMenu)
 	{                                            
 		case Main_Menu:                           
-		addOption("Self Options");
+		addOption("test Options");
 		addOption("Weapons Options");
 		addOption("Vehicle Spawner");
 		addOption("Vehicle Options");
