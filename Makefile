@@ -15,7 +15,7 @@ CFILES	:=	$(wildcard $(SDIR)/*.c)
 SFILES	:=	$(wildcard $(SDIR)/*.s)
 OBJS	:=	$(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(CFILES)) $(patsubst $(SDIR)/%.s, $(ODIR)/%.o, $(SFILES))
 
-LIBS	:=	$(LIBPS4)/libPS4.a  # Statt -l:libPS4.a
+LIBS	:=	$(LIBPS4)/libPS4.a
 
 TARGET = $(shell basename $(CURDIR)).bin
 
