@@ -14,6 +14,16 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
+    - name: Cache apt-get packages
+      uses: actions/cache@v3
+      with:
+        path: |
+          /var/cache/apt
+          /var/lib/apt/lists
+        key: ${{ runner.os }}-apt-${{ hashFiles('**/build.yml') }}
+        restore-keys: |
+          ${{ runner.os }}-apt-
+
     - name: Update apt-get
       run: sudo apt-get update
 
@@ -34,18 +44,12 @@ jobs:
     - name: Set PS4SDK environment variable
       run: echo 'PS4SDK=/home/runner/work/Payload/Payload/SDK' >> $GITHUB_ENV
 
-    #- name: Compile menu.bin
-    #  working-directory: ./gtaPayload
-    #  run: |
-    #    make clean
-    #    make
-
     - name: Debug listening
       run: |
         ls -laR SDK/libPS4
         echo "PS4SDK=$PS4SDK"
         
-    - name: Compile Payload directoy
+    - name: Compile Payload directory
       working-directory: ./
       run: |
         make clean
