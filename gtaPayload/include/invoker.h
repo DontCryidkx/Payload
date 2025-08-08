@@ -58,13 +58,16 @@ void callHash(u64 hash);
 void resetArgs();
 void setVectors();
 
-// Template Declarations
-template<typename T> void pushArg(T value);
+// Korrigierte Template-Deklarationen
+template<typename Ret>
+Ret invoke(u64 hash);
 
-// Non-void Invoke
-template<typename Ret, typename... Args>
-Ret invoke(u64 hash, Args... args);
+template<typename Ret, typename Arg1>
+Ret invoke(u64 hash, Arg1 a1);
 
-// Void Invoke (specialized)
+template<typename Ret, typename Arg1, typename Arg2>
+Ret invoke(u64 hash, Arg1 a1, Arg2 a2);
+
+// Analog für invokeVoid
 template<typename... Args>
 void invokeVoid(u64 hash, Args... args);

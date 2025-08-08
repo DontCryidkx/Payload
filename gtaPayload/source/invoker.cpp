@@ -63,10 +63,25 @@ void invokeVoid(u64 hash, Args... args) {
     setVectors();
 }
 
-// Explicit Instantiations
+// Explizite Instanziierungen für alle verwendeten Typkombinationen
 template void pushArg<int>(int);
 template void pushArg<float>(float);
+template void pushArg<u64>(u64);
 template void pushArg<const char*>(const char*);
+template void pushArg<vector3>(vector3);
+template void pushArg<vector4>(vector4);
 
+// Instanziierungen für invoke()
+template int invoke<int>(u64);
 template int invoke<int, int>(u64, int);
+template int invoke<int, int, int>(u64, int, int);
+template float invoke<float, int>(u64, int);
+template vector3 invoke<vector3, int, int>(u64, int, int);
+template bool invoke<bool, int>(u64, int);
+
+// Instanziierungen für invokeVoid()
+template void invokeVoid<>(u64);
 template void invokeVoid<int>(u64, int);
+template void invokeVoid<int, int>(u64, int, int);
+template void invokeVoid<const char*, const char*>(u64, const char*, const char*);
+template void invokeVoid<int, float, float, float>(u64, int, float, float, float);
