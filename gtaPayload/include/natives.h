@@ -6673,7 +6673,7 @@ static void WAIT(int ms) { invoke<void>(0x1DE7DE0, ms); } // 0x4EDE34FBADD967A6 
 	static BOOL SET_FLASH_LIGHT_FADE_DISTANCE(float distance) { return invoke<BOOL>(0xB3A4F0, distance); } // 0xCEA66DAD478CD39B 0xB0127EA7 b323
 	static void SET_FLASH_LIGHT_ACTIVE_HISTORY(Ped ped, BOOL toggle) { invoke<void>(0xB3A500, ped, toggle); } // 0x988DB6FE9B3AC000 b2060
 	static void SET_WEAPON_ANIMATION_OVERRIDE(Ped ped, Hash animStyle) { invoke<void>(0xB3A570, ped, animStyle); } // 0x1055AC3A667F09D9 0xA5DF7484 b323
-	static int GET_WEAPON_DAMAGE_TYPE(Hash weaponHash) { return invoke<int>(0xB3A600, weaponHastatic void WAIT(int ms) { invoke<void>(0x1DE7DE0, ms); } // 0x4EDE34FBADD967A6 0x7715C03B b323
+	static int GET_WEAPON_DAMAGE_TYPE(Hash weaponHash) { return invoke<int>(0xB3A600, weaponHash); } // 0x4EDE34FBADD967A6 0x7715C03B b323
 	static int START_NEW_SCRIPT(const char* scriptName, int stackSize) { return invoke<int>(0x1DE8110, scriptName, stackSize); } // 0xE81651AD79516E48 0x3F166D0E b323
 	static int START_NEW_SCRIPT_WITH_ARGS(const char* scriptName, Any* args, int argCount, int stackSize) { return invoke<int>(0x1DE82E0, scriptName, args, argCount, stackSize); } // 0xB8BA7F44DF1575E1 0x4A2100E4 b323
 	static int START_NEW_SCRIPT_WITH_NAME_HASH(Hash scriptHash, int stackSize) { return invoke<int>(0x1DE8320, scriptHash, stackSize); } // 0xEB1C67C3A5333A92 0x8D15BE5D b323
