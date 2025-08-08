@@ -43,33 +43,28 @@ N invoke(u64 hash, A &&... args)
 #pragma once
 #include "types.h"
 
+// Native Argument Structure
 struct NativeArg_s {
     u64* returnValue;
     u32 argCount;
-    u8 padding1[4];
     u64* argValues;
-    u32 vectorCount;
-    u8 padding2[4];
-    vector3* argVectors[4];
-    vector4 tempVectors[4];
+    // ... (rest of your existing struct)
 };
 
 extern NativeArg_s nativeArg;
 
-// Basis-Funktionen
+// Base Functions
 void callHash(u64 hash);
 void resetArgs();
 void setVectors();
 
-// Template-Deklarationen
+// Template Declarations
 template<typename T> void pushArg(T value);
 
-// Makro für automatische Void-Erkennung
-#define INVOKE(hash, ...) \
-    sizeof(void) == sizeof(*(void(*)())hash) ? \
-    invokeVoid(hash, ##__VA_ARGS__) : \
-    invokeAuto(hash, ##__VA_ARGS__)
+// Non-void Invoke
+template<typename Ret, typename... Args>
+Ret invoke(u64 hash, Args... args);
 
-// Basis-Templates
-template<typename T> T invokeAuto(u64 hash, ...);
-template<typename... A> void invokeVoid(u64 hash, A... args);
+// Void Invoke (specialized)
+template<typename... Args>
+void invokeVoid(u64 hash, Args... args);
