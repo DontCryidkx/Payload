@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include "types.h"
 #include <utility>
 
@@ -38,4 +38,53 @@ N invoke(u64 hash, A &&... args)
 	callHash(hash);
 	setVectors();
 	return getReturn<N>();
+}*/
+
+#pragma once
+#include "types.h"
+
+struct NativeArg_s {
+    u64* returnValue;
+    u32 argCount;
+    u8 padding1[4];
+    u64* argValues;
+    u32 vectorCount;
+    u8 padding2[4];
+    vector3* argVectors[4];
+    vector4 tempVectors[4];
+};
+
+extern NativeArg_s nativeArg;
+
+// Basis-Funktionen
+void callHash(u64 hash);
+void resetArgs();
+void setVectors();
+
+// Push-Argument Hilfsfunktion
+template<typename T>
+inline void pushArg(T value) {
+    *(T*)&nativeArg.argValues[nativeArg.argCount++] = value;
+}
+
+// Haupt-Template für Nicht-Void
+template<typename N, typename... A>
+inline N invoke(u64 hash, A... args) {
+    resetArgs();
+    u64 dummy[] = { (pushArg(args), 0)... };
+    (void)dummy;
+    callHash(hash);
+    setVectors();
+    return *(N*)nativeArg.returnValue;
+}
+
+// Explizite Void-Spezialisierung
+template<typename... A>
+inline void invoke(u64 hash, A... args) {
+    resetArgs();
+    u64 dummy[] = { (pushArg(args), 0)... };
+    (void)dummy;
+    callHash(hash);
+    setVectors();
+    // Kein Return, aber die Native wird trotzdem aufgerufen!
 }
