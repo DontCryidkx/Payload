@@ -23,12 +23,12 @@ ret
 */
 
 // Location not important, just any place in the EBOOT that the regions differ
-#define RegionCheckAddress (void*)0xD85CA4//1.32 0xD8F304
+#define RegionCheckAddress (void*)0xC4B224//1.32 0xD8F304
 // #define USRegionBytes
 #define RegionBytes 0xC48348F089444002
 
 // IS_PLAYER_ONLINE
-#define HookAddress (void*) 0x100F789//1.33 0xFEC4E9// 1.32 0xFE5539//0xD8F499 1.27 & 1.00
+#define HookAddress (void*) 0xEABEF9//1.33 0xFEC4E9// 1.32 0xFE5539//0xD8F499 1.27 & 1.00
 #define HookBytes 0x48, 0xC7, 0xC1, 0x44, 0x99, 0x32, 0x03, 0xFF, 0xD1, 0x90// 1.27? - 0x48, 0xC7, 0xC1, 0xB0, 0xD2, 0xB9, 0x02, 0xFF, 0xD1, 0x90
 /*
 mov rcx, 0x31B61A4 // PayloadAddress
