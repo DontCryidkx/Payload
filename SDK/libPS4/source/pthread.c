@@ -20,10 +20,6 @@ int (*scePthreadMutexTrylock)(ScePthreadMutex *mutex);
 int (*scePthreadMutexTimedlock)(ScePthreadMutex *mutex, SceKernelUseconds usec);
 int (*scePthreadMutexUnlock)(ScePthreadMutex *mutex);
 
-int (*scePthreadBarrierInit)(ScePthreadBarrier *barrier, const ScePthreadBarrierattr *attr, unsigned int count);
-int (*scePthreadBarrierWait)(ScePthreadBarrier *barrier);
-int (*scePthreadBarrierDestroy)(ScePthreadBarrier *barrier);
-
 void initPthread(void) {
   if (libPthread) {
     return;
@@ -43,10 +39,6 @@ void initPthread(void) {
   RESOLVE(libKernelHandle, scePthreadMutexTrylock);
   RESOLVE(libKernelHandle, scePthreadMutexTimedlock);
   RESOLVE(libKernelHandle, scePthreadMutexUnlock);
-
-  RESOLVE(libKernelHandle, scePthreadBarrierInit);
-  RESOLVE(libKernelHandle, scePthreadBarrierWait);
-  RESOLVE(libKernelHandle, scePthreadBarrierDestroy);
 
   libPthread = 1;
 }

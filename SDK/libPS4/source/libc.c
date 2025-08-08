@@ -37,9 +37,7 @@ char *(*strdup)(const char *s);
 char *(*strtok)(char *str, const char *sep);
 char *(*index)(const char *s, int c);
 char *(*rindex)(const char *s, int c);
-int (*isspace)(int c);
 int (*isdigit)(int c);
-int (*isxdigit)(int c);
 int (*atoi)(const char *s);
 double (*atof)(const char *s);
 size_t (*strlcpy)(char *dst, const char *src, size_t size);
@@ -48,9 +46,6 @@ void *(*_Getpctype)();
 unsigned long (*_Stoul)(const char *, char **, int);
 void (*bcopy)(const void *s1, void *s2, size_t n);
 double (*ceil)(double x);
-
-int (*tolower)(int c);
-int (*toupper)(int c);
 
 void (*srand)(unsigned int seed);
 int (*rand)(void);
@@ -83,7 +78,6 @@ int (*fseek)(FILE *stream, long int offset, int origin);
 long int (*ftell)(FILE *stream);
 int (*fclose)(FILE *stream);
 int (*fprintf)(FILE *stream, const char *format, ...);
-char *(*fgets)(char *str, int size, FILE *stream);
 
 int memset_s(void *s, rsize_t smax, int c, rsize_t n) {
   bool violation = (s == NULL) || (smax > RSIZE_MAX) || (n > RSIZE_MAX) || (n > smax);
@@ -140,9 +134,7 @@ void initLibc(void) {
   RESOLVE(libc, strtok);
   RESOLVE(libc, index);
   RESOLVE(libc, rindex);
-  RESOLVE(libc, isspace);
   RESOLVE(libc, isdigit);
-  RESOLVE(libc, isxdigit);
   RESOLVE(libc, atoi);
   RESOLVE(libc, atof);
   RESOLVE(libc, strlcpy);
@@ -151,9 +143,6 @@ void initLibc(void) {
   RESOLVE(libc, _Stoul);
   RESOLVE(libc, bcopy);
   RESOLVE(libc, ceil);
-
-  RESOLVE(libc, tolower);
-  RESOLVE(libc, toupper);
 
   RESOLVE(libc, srand);
   RESOLVE(libc, rand);
@@ -187,5 +176,4 @@ void initLibc(void) {
   RESOLVE(libc, ftell);
   RESOLVE(libc, fclose);
   RESOLVE(libc, fprintf);
-  RESOLVE(libc, fgets);
 }

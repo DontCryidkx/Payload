@@ -148,7 +148,7 @@ static inline __attribute__((always_inline)) void writeCr0(uint64_t cr0) {
 
 #define kclock_macro(x)                                                                   \
   kernel_base = &((uint8_t *)__readmsr(0xC0000082))[-K##x##_XFAST_SYSCALL];               \
-  if (atoi(#x) > 407) {                                                                   \
+  if (atoi(#x) >= 450) {                                                                  \
     sceSblSrtcClearTimeDifference = (void *)(kernel_base + K##x##_CLEAR_TIME_DIFFERENCE); \
     sceSblSrtcClearTimeDifference(15);                                                    \
   }                                                                                       \
@@ -173,11 +173,6 @@ static inline __attribute__((always_inline)) void writeCr0(uint64_t cr0) {
   npdrm_open = &kernel_ptr[K##x##_NPDRM_OPEN];                              \
   npdrm_close = &kernel_ptr[K##x##_NPDRM_CLOSE];                            \
   npdrm_ioctl = &kernel_ptr[K##x##_NPDRM_IOCTL];
-
-#define no_bd_macro(x)                                                      \
-  kernel_base = &((uint8_t *)__readmsr(0xC0000082))[-K##x##_XFAST_SYSCALL]; \
-  kernel_ptr = (uint8_t *)kernel_base;                                      \
-  no_bd_patch = &kernel_ptr[K##x##_NO_BD_PATCH];
 
 #define caseentry(id, macro) \
   case id:                   \
@@ -230,23 +225,6 @@ static inline __attribute__((always_inline)) void writeCr0(uint64_t cr0) {
     caseentry(850, macro);                \
     caseentry(852, macro);                \
     caseentry(900, macro);                \
-    caseentry(903, macro);                \
-    caseentry(904, macro);                \
-    caseentry(950, macro);                \
-    caseentry(951, macro);                \
-    caseentry(960, macro);                \
-    caseentry(1000, macro);               \
-    caseentry(1001, macro);               \
-    caseentry(1050, macro);               \
-    caseentry(1070, macro);               \
-    caseentry(1071, macro);               \
-    caseentry(1100, macro);               \
-    caseentry(1102, macro);               \
-    caseentry(1150, macro);               \
-    caseentry(1152, macro);               \
-    caseentry(1200, macro);               \
-    caseentry(1202, macro);               \
-    caseentry(1250, macro);               \
   default:                                \
     printf_debug("Unsupported firmware"); \
     return -1;                            \
@@ -269,6 +247,5 @@ int spoof_target_id(uint8_t id);
 int enable_perm_uart();
 int exit_idu();
 int npdrm_patch();
-int no_bd_patch();
 
 #endif

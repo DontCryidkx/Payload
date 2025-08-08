@@ -25,7 +25,6 @@ int (*sceKernelClose)(int fd);
 
 unsigned int (*sceKernelSleep)(unsigned int seconds);
 int (*sceKernelUsleep)(unsigned int microseconds);
-int (*usleep)(unsigned int microseconds);
 int (*sceKernelGettimeofday)(SceKernelTimeval *tp);
 uint64_t (*sceKernelGetProcessTime)(void);
 int (*sceKernelGetCurrentCpu)(void);
@@ -55,12 +54,6 @@ int (*setregid)(int rgid, int egid);
 int (*sceKernelSendNotificationRequest)(int device, SceNotificationRequest *req, size_t size, int blocking);
 const char *(*sceKernelGetFsSandboxRandomWord)();
 int (*sceKernelGetSystemSwVersion)(SceFwInfo *fw_info);
-
-uint32_t (*sceKernelGetCpuTemperature)(uint32_t *);
-
-uint32_t (*sceKernelGetIdPs)(void *);
-uint32_t (*sceKernelGetOpenPsId)(void *);
-uint32_t (*sceKernelGetOpenPsIdForSystem)(void *);
 
 SYSCALL(kill, 37);
 SYSCALL(ioctl, 54);
@@ -100,7 +93,6 @@ void initKernel(void) {
 
   RESOLVE(libKernelHandle, sceKernelSleep);
   RESOLVE(libKernelHandle, sceKernelUsleep);
-  RESOLVE(libKernelHandle, usleep);
   RESOLVE(libKernelHandle, sceKernelGettimeofday);
   RESOLVE(libKernelHandle, sceKernelGetProcessTime);
   RESOLVE(libKernelHandle, sceKernelGetCurrentCpu);
@@ -130,10 +122,4 @@ void initKernel(void) {
   RESOLVE(libKernelHandle, sceKernelSendNotificationRequest);
   RESOLVE(libKernelHandle, sceKernelGetFsSandboxRandomWord);
   RESOLVE(libKernelHandle, sceKernelGetSystemSwVersion);
-
-  RESOLVE(libKernelHandle, sceKernelGetCpuTemperature);
-
-  RESOLVE(libKernelHandle, sceKernelGetIdPs);
-  RESOLVE(libKernelHandle, sceKernelGetOpenPsId);
-  RESOLVE(libKernelHandle, sceKernelGetOpenPsIdForSystem);
 }
