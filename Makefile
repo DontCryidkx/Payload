@@ -1,4 +1,4 @@
-LIBPS4	:=	$(PS4SDK)/libPS4
+LIBPS4	:=	/home/runner/work/Payload/Payload/SDK/libPS4
 
 CC		:=	gcc
 AS		:=	gcc
@@ -15,7 +15,7 @@ CFILES	:=	$(wildcard $(SDIR)/*.c)
 SFILES	:=	$(wildcard $(SDIR)/*.s)
 OBJS	:=	$(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(CFILES)) $(patsubst $(SDIR)/%.s, $(ODIR)/%.o, $(SFILES))
 
-LIBS	:=	-lPS4
+LIBS	:=	-l:libPS4.a
 
 TARGET = $(shell basename $(CURDIR)).bin
 
