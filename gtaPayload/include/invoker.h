@@ -1,4 +1,4 @@
-/*#pragma once
+#pragma once
 #include "types.h"
 #include <utility>
 
@@ -38,36 +38,4 @@ N invoke(u64 hash, A &&... args)
 	callHash(hash);
 	setVectors();
 	return getReturn<N>();
-}*/
-
-#pragma once
-#include "types.h"
-
-// Native Argument Structure
-struct NativeArg_s {
-    u64* returnValue;
-    u32 argCount;
-    u64* argValues;
-    // ... (rest of your existing struct)
-};
-
-extern NativeArg_s nativeArg;
-
-// Base Functions
-void callHash(u64 hash);
-void resetArgs();
-void setVectors();
-
-// Korrigierte Template-Deklarationen
-template<typename Ret>
-Ret invoke(u64 hash);
-
-template<typename Ret, typename Arg1>
-Ret invoke(u64 hash, Arg1 a1);
-
-template<typename Ret, typename Arg1, typename Arg2>
-Ret invoke(u64 hash, Arg1 a1, Arg2 a2);
-
-// Analog für invokeVoid
-template<typename... Args>
-void invokeVoid(u64 hash, Args... args);
+}
