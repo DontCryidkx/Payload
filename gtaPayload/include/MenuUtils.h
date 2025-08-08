@@ -214,7 +214,7 @@ void SPRITE(char* TextOne, char* TextTwo, float X, float Y, float Width, float H
 	if (!HAS_STREAMED_TEXTURE_DICT_LOADED(TextOne)) {
 		REQUEST_STREAMED_TEXTURE_DICT(TextOne, false);
 		} else {
-		DRAW_SPRITE(TextOne, TextTwo, X, Y, Width, Height, Rotation, R, G, B, A, 1);
+		DRAW_SPRITE(TextOne, TextTwo, X, Y, Width, Height, Rotation, R, G, B, A);
 	}
 }
 
