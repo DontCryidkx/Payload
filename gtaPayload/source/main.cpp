@@ -81,7 +81,7 @@ void Menu(void)
 		CheckBox("Never Wanted", NoCops);
 		switch (GET())
 		{
-			case 1: UndetectableGodmode = !UndetectableGodmode; if (UndetectableGodmode == false) SET_ENTITY_PROOFS(PLAYER_PED_ID(), false, false, false, false, false, false, false, false); SET_ENTITY_HEALTH(PLAYER_PED_ID(), GET_ENTITY_MAX_HEALTH(PLAYER_PED_ID()), 1); SET_PED_CAN_RAGDOLL(PLAYER_PED_ID(), true); SET_PED_CAN_RAGDOLL_FROM_PLAYER_IMPACT(PLAYER_PED_ID(), true); SET_PED_CAN_BE_KNOCKED_OFF_VEHICLE(PLAYER_PED_ID(), false); SET_PLAYER_INVINCIBLE(PLAYER_ID(), false); break;
+			case 1: UndetectableGodmode = !UndetectableGodmode; if (UndetectableGodmode == false) SET_ENTITY_PROOFS(PLAYER_PED_ID(), false, false, false, false, false, false, false, false); SET_ENTITY_HEALTH(PLAYER_PED_ID(), GET_ENTITY_MAX_HEALTH(PLAYER_PED_ID())); SET_PED_CAN_RAGDOLL(PLAYER_PED_ID(), true); SET_PED_CAN_RAGDOLL_FROM_PLAYER_IMPACT(PLAYER_PED_ID(), true); SET_PED_CAN_BE_KNOCKED_OFF_VEHICLE(PLAYER_PED_ID(), false); SET_PLAYER_INVINCIBLE(PLAYER_ID(), false); break;
 			case 2: NoCops = !NoCops; break;
         }
 		break;
