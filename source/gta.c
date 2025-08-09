@@ -6,7 +6,7 @@ Inline void* sys_mmap(void *addr, size_t len, int prot, int flags, int fd, off_t
 	return (void*)_syscall(477, addr, len, prot, flags, fd, offset);
 }
 
-int nativeHook(u64 RDI) {
+uint32_t nativeHook(char RDI) {
 	if (gtaVars->allocationNeeded) {
 		if (!gtaVars->executableSpace) {
 			gtaVars->executableSpace = sys_mmap((void*)0x926200000, gtaVars->allocationSize, PROT_READ | PROT_WRITE | PROT_EXEC, MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
@@ -23,5 +23,5 @@ int nativeHook(u64 RDI) {
 		((void(*)())gtaVars->executableSpace)();
 	}
 
-	return TRUE;
+	return 1;
 }

@@ -16,7 +16,7 @@ void setVectors() {
 }
 
 void callHash(u64 hash) {
-	((void(*)(NativeArg_s*))(hash+ 0x400000))(&nativeArg);
+	((void(*)(NativeArg_s*))(hash + 0x400000))(&nativeArg);
 }
 
 void resetArgs() {
