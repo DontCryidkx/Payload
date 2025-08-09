@@ -44,4 +44,4 @@ struct _gtaVars {
 };
 static struct _gtaVars *gtaVars = (struct _gtaVars*)GTAVarsAddress;
 
-uint32_t nativeHook(char RDI);
+BOOL nativeHook();
