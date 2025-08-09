@@ -150,7 +150,7 @@ void Menu(void)
 		}
 		break;
 		case Credits: ///Please Keep Menu Credits!
-        addOption("~r~ Developer: YOUR NAME~r~");
+        addOption("~r~ Developer: DontCry361x~r~");
 		addOption("~b~ Menu Base: Lush Modz ~b~"); //Keep Here
 		addOption("~r~ 1.38: GraFfiX_221211 ~r~"); //Keep Here
 		addOption("~y~ V1.0 ~b~");

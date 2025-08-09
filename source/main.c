@@ -21,7 +21,7 @@ BOOL regionCheck() {
 	u64 gameCheck;
 	procReadBytes(gamePID, RegionCheckAddress, (void*)&gameCheck, sizeof(gameCheck));
 	if (gameCheck == RegionBytes) {
-		sysNotify("GTA V 1.52 detected.");
+		sysNotify("GTA 51.52 detected.");
 		hookAddress = HookAddress;	
 	}
 	else {
