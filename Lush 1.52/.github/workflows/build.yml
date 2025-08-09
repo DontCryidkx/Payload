@@ -1,0 +1,62 @@
+name: Build Payload
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Cache apt-get packages
+      uses: actions/cache@v3
+      with:
+        path: |
+          /var/cache/apt
+          /var/lib/apt/lists
+        key: ${{ runner.os }}-apt-${{ hashFiles('**/build.yml') }}
+        restore-keys: |
+          ${{ runner.os }}-apt-
+
+    - name: Update apt-get
+      run: sudo apt-get update
+
+    - name: Import GPG key for Bionic repository
+      run: |
+        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
+
+    - name: Add Bionic repository
+      run: |
+        echo "deb http://dk.archive.ubuntu.com/ubuntu/ bionic main universe" | sudo tee /etc/apt/sources.list.d/bionic.list
+        sudo apt-get update
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get install -y make clang gcc g++ llvm binutils software-properties-common aptitude golang
+        sudo apt-get install -y g++-7 gcc-7
+
+    - name: Set PS4SDK environment variable
+      run: echo 'PS4SDK=/home/runner/work/Payload/Payload/SDK' >> $GITHUB_ENV
+
+    - name: Debug listening
+      run: |
+        ls -laR SDK/libPS4
+        echo "PS4SDK=$PS4SDK"
+        
+    - name: Compile Payload directory
+      working-directory: ./
+      run: |
+        make clean
+        make
+        
+    - name: Upload Payload.bin artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Payload-bin
+        path: Payload.bin
