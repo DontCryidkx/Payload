@@ -176,18 +176,6 @@ extern "C" void _main(void) {
 	int newFrameCount = GET_FRAME_COUNT();
 	if (newFrameCount > frameCount) {
 		frameCount = newFrameCount;
-		if(!HAS_STREAMED_TEXTURE_DICT_LOADED("timerbars"))
-		REQUEST_STREAMED_TEXTURE_DICT("timerbars", false);
-		if(!HAS_STREAMED_TEXTURE_DICT_LOADED("mpleaderboard"))
-		REQUEST_STREAMED_TEXTURE_DICT("mpleaderboard", false);
-		if(!HAS_STREAMED_TEXTURE_DICT_LOADED("mpinventory"))
-		REQUEST_STREAMED_TEXTURE_DICT("mpinventory", false);
-		if(!HAS_STREAMED_TEXTURE_DICT_LOADED("mprankbadge"))
-		REQUEST_STREAMED_TEXTURE_DICT("mprankbadge", false);
-		if(!HAS_STREAMED_TEXTURE_DICT_LOADED("commonmenu"))
-		REQUEST_STREAMED_TEXTURE_DICT("commonmenu", false);
-		if(!HAS_STREAMED_TEXTURE_DICT_LOADED("commonmenutu"))
-		REQUEST_STREAMED_TEXTURE_DICT("commonmenutu", false);
 		SetupButtons();
 		Menu();
 		Show_FPS();
